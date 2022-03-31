@@ -49,7 +49,7 @@
     function get_text() {
 
         var input_value = document.getElementById('url_input').value
-        var isValid = isValidURL("http://example.com");
+        var isValid = isValidURL(input_value);
         alert(isValid ? "Valid URL!!!" : "Damn...");
 
         // alert(input_value)
